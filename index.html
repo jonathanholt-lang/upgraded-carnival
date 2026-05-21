@@ -181,7 +181,8 @@
       background: #f9f9f9;
       display: flex;
       justify-content: center;
-      overflow: hidden;
+      overflow-x: visible;
+      overflow-y: clip;
     }
 
     .hero-container {
@@ -190,7 +191,7 @@
       max-width: 1440px;
       height: 1214px;
       flex-shrink: 0;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .hero-dark-card {
@@ -225,6 +226,12 @@
       z-index: 2;
       animation: hero-screenshot-rise 1s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
       transform-origin: 50% 100%;
+      will-change: transform;
+    }
+
+    .hero-dark-card {
+      transform-origin: 50% 100%;
+      will-change: transform;
     }
 
     @keyframes hero-screenshot-rise {
@@ -2044,6 +2051,36 @@ dev:
         }
       });
     });
+  })();
+
+  // Hero scroll-scale: screenshot scales up to 1.20, dark card up to 1.12 as the
+  // user scrolls through the hero. Centered origin so they break out symmetrically.
+  (function () {
+    var hero = document.querySelector('.hero');
+    var shot = document.querySelector('.hero-screenshot');
+    var card = document.querySelector('.hero-dark-card');
+    if (!hero || !shot || !card) return;
+
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var rect = hero.getBoundingClientRect();
+      var p = Math.max(0, Math.min(1, -rect.top / rect.height));
+      shot.style.transform = 'scale(' + (1 + p * 0.30) + ')';
+      card.style.transform = 'scale(' + (1 + p * 0.12) + ')';
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
   })();
 </script>
 
