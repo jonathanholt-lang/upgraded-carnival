@@ -1001,53 +1001,71 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      background: #f7f4ef;
+      border: 1px solid rgba(0, 0, 0, 0.10);
+      border-radius: 12px;
+      padding: 20px 24px;
+      /* Subtle grid pattern over the card surface */
+      background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.045) 1px, transparent 1px);
+      background-size: 14px 14px;
     }
 
-    .agent-card-header-dark {
-      display: inline-flex;
-      align-self: flex-start;
-      width: fit-content;
-      align-items: center;
-      gap: 12px;
-      background: #101729;
-      border: 1px solid #4c5774;
-      border-radius: 10px;
-      padding: 16px 26px 16px 16px;
-    }
-
+    .agent-card-header-dark,
     .agent-card-header {
-      display: inline-flex;
-      align-self: flex-start;
-      width: fit-content;
+      display: flex;
+      align-self: stretch;
+      width: 100%;
       align-items: center;
       gap: 12px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
     }
 
     .agent-icon {
-      width: 56px;
-      height: 56px;
+      width: 40px;
+      height: 40px;
       flex-shrink: 0;
+      border-radius: 8px;
     }
 
     .agent-name {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: 600;
-      line-height: 18px;
-      letter-spacing: -0.64px;
+      line-height: 22px;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
-    .agent-name-dark { color: #f9f9f9; }
-    .agent-name-light { color: #f9f9f9; }
+    .agent-name-dark { color: #00031a; }
+    .agent-name-light { color: #00031a; }
 
-    .agent-org-featured { color: #988adf; font-weight: 400; display: block; }
-    .agent-org { color: #988adf; font-weight: 400; display: block; }
+    .agent-org-featured,
+    .agent-org {
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.06);
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      letter-spacing: 0;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
 
     .agent-description {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 400;
-      line-height: 24px;
-      color: #00031a;
-      letter-spacing: 0.64px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, 0.72);
+      letter-spacing: 0;
+      margin: 0;
     }
 
     /* =========================================
