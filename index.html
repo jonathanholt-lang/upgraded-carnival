@@ -2336,18 +2336,17 @@
         gap: 24px;
       }
       .footer-cta-bg {
-        /* Mirror the desktop visual at fixed pixel sizes so the pattern's
-           density doesn't change with viewport. Anchored to the right edge
-           and pushed up so only the upper diagonal slice is visible,
-           matching how it renders at desktop. */
-        top: -480px;
+        /* Keep image at full desktop size; let the container crop into it
+           instead of scaling the pattern down (which gets visually busy). */
+        top: -200px;
         bottom: auto;
         left: auto;
         right: 0;
-        width: 2150px;
-        height: 1200px;
+        width: 2000px;
+        height: 1100px;
         transform: scaleX(-1);
         transform-origin: right center;
+        object-fit: none;
         pointer-events: none;
         max-width: none;
         opacity: 0.55;
