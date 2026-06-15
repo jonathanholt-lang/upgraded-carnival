@@ -2336,16 +2336,19 @@
         gap: 24px;
       }
       .footer-cta-bg {
-        top: 0;
-        left: 0;
+        /* Keep image at full desktop size; let the container crop into it
+           instead of scaling the pattern down (which gets visually busy). */
+        top: -200px;
+        bottom: auto;
+        left: auto;
         right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 100%;
-        transform: none;
-        transform-origin: center;
-        object-fit: cover;
-        object-position: right center;
+        width: 2000px;
+        height: 1100px;
+        transform: scaleX(-1);
+        transform-origin: right center;
+        object-fit: none;
+        pointer-events: none;
+        max-width: none;
         opacity: 0.55;
       }
       .footer-cta-card h2 { flex: none; }
