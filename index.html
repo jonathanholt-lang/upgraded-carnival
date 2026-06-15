@@ -2336,17 +2336,18 @@
         gap: 24px;
       }
       .footer-cta-bg {
-        /* Keep image at full desktop size; let the container crop into it
-           instead of scaling the pattern down (which gets visually busy). */
-        top: -200px;
+        /* Keep image at full desktop size; let the container crop into it.
+           Centered so the wave's diagonal stays visible across the whole card
+           width regardless of how short the card becomes. */
+        top: 50%;
         bottom: auto;
-        left: auto;
-        right: 0;
-        width: 2000px;
-        height: 1100px;
-        transform: scaleX(-1);
-        transform-origin: right center;
-        object-fit: none;
+        left: 50%;
+        right: auto;
+        width: 2400px;
+        height: 1300px;
+        transform: translate(-50%, -50%) scaleX(-1);
+        transform-origin: center;
+        object-fit: cover;
         pointer-events: none;
         max-width: none;
         opacity: 0.55;
